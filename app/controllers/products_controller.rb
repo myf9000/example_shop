@@ -1,10 +1,12 @@
 class ProductsController < ApplicationController
+  impressionist :actions=>[:show]
   before_action :find_product, except: [:index, :new, :create]
   def new
     @product = Product.new
   end
 
   def show
+    impressionist(@product)
   end
 
   def destroy
