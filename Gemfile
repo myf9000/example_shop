@@ -26,6 +26,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'simple_form'
 gem 'friendly_id', '~> 5.1.0'
 gem 'impressionist'
+gem 'will_paginate', '~> 3.0.6'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
