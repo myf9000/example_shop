@@ -10,6 +10,9 @@ class Product < ActiveRecord::Base
 							    too_long: " must have at most %{count} words"
 							}
 
+	has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "http://res.freestockphotos.biz/pictures/9/9552-a-green-apple-on-a-dark-background-pv.jpg"
+  	validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
+  	
 	extend FriendlyId
   	friendly_id :title, use: :slugged
 
