@@ -1,3 +1,13 @@
+<% if @product.errors.any? %>
+  <p class="alert alert-error">Ooops!</p>
+  <ul>
+    <% @product.errors.each do |msg| %>
+      <li class="error"><%= msg %></li>
+    <% end %>
+  </ul> 
+<% end %>
+
+
 <%= simple_form_for @product do |f| %>
   <%= f.input :title %>
   <%= f.input :description %>
