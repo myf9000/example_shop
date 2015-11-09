@@ -1,0 +1,12 @@
+<% provide(:title, "Index") %>
+
+<h1>Products list</h1>
+
+<% @products.each do |f| %>
+  <%= link_to f.title, f %>
+  <br>
+<% end %>
+
+<hr>
+
+<%= link_to "New", new_product_path %>

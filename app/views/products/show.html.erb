@@ -1,0 +1,9 @@
+<% provide(:title, "#{@product.title}") %>
+
+<h1>Product: <%= @product.title %></h1>
+<p><%= @product.description %></p>
+<p><%= print_price(@product.price) %></p>
+<br>
+<%= link_to "Back", products_path %>
+<%= link_to "Edit", edit_product_path(@product) %>
+<%= link_to "Delete", product_path, method: :delete, data: {confirm: "Are You Sure?"} %>
