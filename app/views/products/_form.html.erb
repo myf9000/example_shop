@@ -12,6 +12,7 @@
   <%= f.input :title %>
   <%= f.input :description %>
   <%= f.input :price %>
+  <%= f.input :amount %>
   <%= f.input :avatar, as: :file %>
 
 
@@ -28,5 +29,8 @@
   <div id="subcategories_select">
     <%= f.collection_select :subcategory_id, Subcategory.all, :id, :name, { prompt: "Choose a subcategory" } %>
   </div>
+
+
+  <%= f.input :condition, as: :radio_buttons, :label => "Condition:", :collection =>  [ 'New', 'Old'] %>
   <%= f.button :submit %>
 <% end %>

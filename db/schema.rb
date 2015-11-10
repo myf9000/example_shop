@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110172533) do
+ActiveRecord::Schema.define(version: 20151110180633) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -84,6 +84,8 @@ ActiveRecord::Schema.define(version: 20151110172533) do
     t.integer  "viewed_count",        default: 0
     t.integer  "category_id"
     t.integer  "subcategory_id"
+    t.string   "condition"
+    t.integer  "amount",              default: 1
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id"

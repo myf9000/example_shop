@@ -13,6 +13,8 @@
 <% end %>
 
 <br>
+<p>Condition: <%= @product.condition %> </p>
+<p>Amount: <%= @product.amount %> </p>
 <p>Viewed: <%= @product.impressionist_count(:filter=>:ip_address) %> </p>
 <hr>
 <%= link_to "Back", products_path %>
