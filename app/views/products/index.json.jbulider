@@ -1,0 +1,4 @@
+json.array!(@products) do |f|
+  json.extract! f, :id, :title
+  json.url f_url(f, format: :json)
+end

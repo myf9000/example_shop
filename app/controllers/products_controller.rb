@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   impressionist :actions=>[:show]
   before_action :find_product, except: [:index, :new, :create, :sort_list]
+  autocomplete :product, :title, :full => true
 
   def new
     @product = Product.new
@@ -17,6 +18,9 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all.paginate(:page => params[:page], :per_page => 3)
+     if params[:search]
+      @products = Product.title_like("%#{params[:search]}%").order('title').all.paginate(:page => params[:page], :per_page => 3)
+    end
   end
 
   def sort_list

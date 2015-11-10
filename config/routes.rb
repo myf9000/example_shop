@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   get 'static_pages/faq', as: :faq
   get 'static_pages/news', as: :news
   
-  resources :products
+  resources :products do
+
+  get 'products/autocomplete_product_title' , :on => :collection
+end
   resources :categories, only: [:new, :create] do
     member do
       get :get_subcategories, defaults: { format: "js" }
@@ -16,6 +19,7 @@ Rails.application.routes.draw do
 
   root 'products#index'
 
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

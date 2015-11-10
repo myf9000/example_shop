@@ -29,4 +29,6 @@ class Product < ActiveRecord::Base
  	accepts_nested_attributes_for :pictures,
 								  	reject_if: proc { |attributes| attributes['pict'].blank? },
 								  	allow_destroy: true
+
+	scope :title_like, -> (title) { where("title like ?", title)}
 end
