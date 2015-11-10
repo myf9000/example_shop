@@ -6,6 +6,12 @@
 <p><%= Category.find(@product.category_id).name %></p>
 <p><%= Subcategory.find(@product.subcategory_id).name %></p>
 <%= image_tag @product.avatar.url(:medium) %>
+<hr>
+
+<% @product.pictures.each do |pic| %>
+  <%= image_tag pic.pict.url(:thumb) %> 
+<% end %>
+
 <br>
 <p>Viewed: <%= @product.impressionist_count(:filter=>:ip_address) %> </p>
 <hr>

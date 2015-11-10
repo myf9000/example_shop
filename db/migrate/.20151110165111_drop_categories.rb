@@ -1,6 +1,6 @@
 class DropCategories < ActiveRecord::Migration
   def up
-    drop_table :categories
+    drop_table :create_pictures
   end
 
   def down

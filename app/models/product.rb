@@ -24,4 +24,9 @@ class Product < ActiveRecord::Base
   	def related(product)
 		products = Product.all.select {|i| i.subcategory_id == product.subcategory_id and i.id != product.id}
 	end
+
+	has_many :pictures
+ 	accepts_nested_attributes_for :pictures,
+								  	reject_if: proc { |attributes| attributes['pict'].blank? },
+								  	allow_destroy: true
 end
