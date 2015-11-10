@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'static_pages/about', as: :about
+
+  get 'static_pages/faq', as: :faq
+
+  get 'static_pages/news', as: :news
+
   resources :products
 
   root 'products#index'
