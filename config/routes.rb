@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resources :products
   resources :categories, only: [:new, :create]
 
-  get 'category/:category', to: 'products#category', as: :category
+  get 'sort/:sort', to: 'products#sort_list', as: :sort
 
   root 'products#index'
 

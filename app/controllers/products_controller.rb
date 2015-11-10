@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   impressionist :actions=>[:show]
-  before_action :find_product, except: [:index, :new, :create, :category]
+  before_action :find_product, except: [:index, :new, :create, :sort_list]
 
   def new
     @product = Product.new
@@ -19,16 +19,16 @@ class ProductsController < ApplicationController
     @products = Product.all.paginate(:page => params[:page], :per_page => 3)
   end
 
-  def category
-    if params[:category] == "DESC"
+  def sort_list
+    if params[:sort] == "DESC"
       @products = Product.all.order("created_at DESC").paginate(:page => params[:page], :per_page => 3)
-    elsif params[:category] == "ASC"
+    elsif params[:sort] == "ASC"
       @products = Product.all.order("created_at ASC").paginate(:page => params[:page], :per_page => 3)
-    elsif params[:category] == "small"
+    elsif params[:sort] == "small"
       @products = Product.all.order("price ASC").paginate(:page => params[:page], :per_page => 3)
-    elsif params[:category] == "big"
+    elsif params[:sort] == "big"
       @products = Product.all.order("price DESC").paginate(:page => params[:page], :per_page => 3)
-    elsif params[:category] == "top"
+    elsif params[:sort] == "top"
       @products = Product.all.order("viewed_count ASC").paginate(:page => params[:page], :per_page => 3)
     else
       @products = Product.all.paginate(:page => params[:page], :per_page => 3)

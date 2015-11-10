@@ -3,15 +3,15 @@
 <h1>Products list</h1>
 
 <h3>Sorted</h3>
-<%= link_to "Created DESC", category_path("DESC") %>
+<%= link_to "Created DESC", sort_path("DESC") %>
 <br>
-<%= link_to "Created ASC", category_path("ASC") %>
+<%= link_to "Created ASC", sort_path("ASC") %>
 <br>
-<%= link_to "From smallest price", category_path("small") %>
+<%= link_to "From smallest price", sort_path("small") %>
 <br>
-<%= link_to "From biggest price", category_path("big") %>
+<%= link_to "From biggest price", sort_path("big") %>
 <br>
-<%= link_to "Top", category_path("top") %>
+<%= link_to "Top", sort_path("top") %>
 <hr>
 
 <% @products.each do |f| %>
