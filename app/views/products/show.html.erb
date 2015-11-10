@@ -3,6 +3,7 @@
 <h1>Product: <%= @product.title %></h1>
 <p><%= @product.description %></p>
 <p><%= print_price(@product.price) %></p>
+<p><%= Category.find(@product.category_id).name %></p>
 <%= image_tag @product.avatar.url(:medium) %>
 <br>
 <p>Viewed: <%= @product.impressionist_count(:filter=>:ip_address) %> </p>

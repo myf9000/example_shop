@@ -13,5 +13,6 @@
   <%= f.input :description %>
   <%= f.input :price %>
   <%= f.input :avatar, as: :file %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category" }, id: "category_id" %>
   <%= f.button :submit %>
 <% end %>

@@ -17,4 +17,6 @@ class Product < ActiveRecord::Base
   	friendly_id :title, use: :slugged
 
   	is_impressionable :counter_cache => true, :column_name => :viewed_count, :unique => true
+
+  	has_many :categories
 end
