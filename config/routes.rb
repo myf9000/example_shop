@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   get 'static_pages/about', as: :about
-
   get 'static_pages/faq', as: :faq
-
   get 'static_pages/news', as: :news
 
   resources :products
+
+  get 'category/:category', to: 'products#category', as: :category
 
   root 'products#index'
 
