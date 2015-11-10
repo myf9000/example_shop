@@ -13,6 +13,9 @@
   <%= f.input :description %>
   <%= f.input :price %>
   <%= f.input :avatar, as: :file %>
-  <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category" }, id: "category_id" %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category" } %>
+  <div id="subcategories_select">
+    <%= f.collection_select :subcategory_id, Subcategory.all, :id, :name, { prompt: "Choose a subcategory" } %>
+  </div>
   <%= f.button :submit %>
 <% end %>

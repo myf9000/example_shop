@@ -55,6 +55,11 @@ class ProductsController < ApplicationController
   def edit
   end
 
+  def get_subcategories
+    @subcategories = Subcategory.where(category_id: params[:category_id])
+    respond_with(@subcategories)
+  end
+
   private
 
   def find_product
@@ -62,6 +67,6 @@ class ProductsController < ApplicationController
   end
 
   def product_params
-    params.require(:product).permit(:title, :description, :price, :avatar, :category_id)
+    params.require(:product).permit(:title, :description, :price, :avatar, :category_id, :subcategory_id)
   end
 end

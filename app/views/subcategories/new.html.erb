@@ -1,0 +1,6 @@
+<h1>Subcategories#new</h1>
+<%= simple_form_for @subcategory do |f| %>
+  <%= f.input :name %>
+  <%= f.collection_select :category_id, Category.all, :id, :name, { prompt: "Choose a category" } %>
+  <%= f.button :submit %>
+<% end %>

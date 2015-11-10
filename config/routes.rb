@@ -3,10 +3,15 @@ Rails.application.routes.draw do
   get 'static_pages/about', as: :about
   get 'static_pages/faq', as: :faq
   get 'static_pages/news', as: :news
-
+  
   resources :products
-  resources :categories, only: [:new, :create]
+  resources :categories, only: [:new, :create] do
+    member do
+      get :get_subcategories, defaults: { format: "js" }
+    end
+  end
 
+  resources :subcategories, only: [:new, :create]
   get 'sort/:sort', to: 'products#sort_list', as: :sort
 
   root 'products#index'

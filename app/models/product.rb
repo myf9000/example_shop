@@ -19,4 +19,9 @@ class Product < ActiveRecord::Base
   	is_impressionable :counter_cache => true, :column_name => :viewed_count, :unique => true
 
   	has_many :categories
+  	has_many :subcategories
+
+  	def related(product)
+		products = Product.all.select {|i| i.subcategory_id == product.subcategory_id and i.id != product.id}
+	end
 end

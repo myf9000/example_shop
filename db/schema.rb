@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151110124813) do
+ActiveRecord::Schema.define(version: 20151110151432) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -70,9 +70,20 @@ ActiveRecord::Schema.define(version: 20151110124813) do
     t.datetime "avatar_updated_at"
     t.integer  "viewed_count",        default: 0
     t.integer  "category_id"
+    t.integer  "subcategory_id"
   end
 
   add_index "products", ["category_id"], name: "index_products_on_category_id"
   add_index "products", ["slug"], name: "index_products_on_slug", unique: true
+  add_index "products", ["subcategory_id"], name: "index_products_on_subcategory_id"
+
+  create_table "subcategories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
+  end
+
+  add_index "subcategories", ["category_id"], name: "index_subcategories_on_category_id"
 
 end
