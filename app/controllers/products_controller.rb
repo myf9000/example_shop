@@ -18,11 +18,12 @@ class ProductsController < ApplicationController
 
   def index
 
-    @products = Product.all #.paginate(:page => params[:page], :per_page => 3)
+    @products = Product.all
     t = []
     @products.each do |f| t << f.title end
       t = t.uniq
     gon.titles = t
+    @products = Product.all.all.paginate(:page => params[:page], :per_page => 3)
     if params[:search]
       @products = Product.title_like("%#{params[:search]}%").order('title').all.paginate(:page => params[:page], :per_page => 3)
     end
