@@ -1,9 +1,10 @@
 <% provide(:title, "Index") %>
 
-<%= form_tag(products_path, :method => "get", id: "search-form") do %>
-<%= text_field_tag :search, params[:search], class: "search-query", placeholder: "namesearch", type: "search", data: {autocomplete: products_autocomplete_product_title_products_path} %>  
-<%= submit_tag "Search" %>
-<%end%>
+<div class="ui-widget">
+    <input id="titles" />
+</div>
+
+
 
 <h1>Products list</h1>
 
@@ -25,7 +26,7 @@
 <% end %>
 
 <br>
-<%= will_paginate @products %>
+
 <hr>
 
 <%= link_to "New", new_product_path %>

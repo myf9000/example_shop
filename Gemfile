@@ -32,7 +32,7 @@ gem 'cocoon', '~> 1.2.6'
 gem 'rails4-autocomplete'
 gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
-
+gem 'gon'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
