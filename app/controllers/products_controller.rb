@@ -21,6 +21,7 @@ class ProductsController < ApplicationController
     @products = Product.all #.paginate(:page => params[:page], :per_page => 3)
     t = []
     @products.each do |f| t << f.title end
+      t = t.uniq
     gon.titles = t
     if params[:search]
       @products = Product.title_like("%#{params[:search]}%").order('title').all.paginate(:page => params[:page], :per_page => 3)

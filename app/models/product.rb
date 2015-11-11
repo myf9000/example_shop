@@ -1,5 +1,9 @@
 class Product < ActiveRecord::Base
 	validates_numericality_of :price, presence: true
+	validates :category_id, presence: true
+	validates :subcategory_id, presence: true
+	validates :amount, presence: true
+	validates :condition, presence: true
 	validates :title, presence: true, length: { maximum: 50 }
 	validates :description, presence: true, 
 							length: {
