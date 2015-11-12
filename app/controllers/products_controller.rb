@@ -4,6 +4,8 @@ class ProductsController < ApplicationController
   autocomplete :product, :title, :full => true
   before_action :authenticate_user!, except: [:index]
 
+  load_and_authorize_resource
+
   def new
     @product = current_user.products.build
   end
