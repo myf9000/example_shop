@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   impressionist :actions=>[:show]
-  before_action :find_product, except: [:index, :new, :create, :sort_list]
+  before_action :find_product, except: [:index, :new, :create, :sort_list, :home]
   autocomplete :product, :title, :full => true
 
   def new
@@ -13,11 +13,14 @@ class ProductsController < ApplicationController
 
   def destroy
     @product.destroy
-    redirect_to products_path, notice: "Product was deleted"
+    redirect_to root_path, notice: "Product was deleted"
   end
 
   def index
+    @products = Product.all.all.paginate(:page => params[:page], :per_page => 3)
+  end
 
+  def home
     @products = Product.all
     t = []
     @products.each do |f| t << f.title end

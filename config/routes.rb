@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   get 'static_pages/about', as: :about
   get 'static_pages/faq', as: :faq
   get 'static_pages/news', as: :news
-  
+  get 'products/home', as: :home
   resources :products do
-
   get 'products/autocomplete_product_title' , :on => :collection
 end
   resources :categories, only: [:new, :create] do
@@ -17,7 +16,7 @@ end
   resources :subcategories, only: [:new, :create]
   get 'sort/:sort', to: 'products#sort_list', as: :sort
 
-  root 'products#index'
+  root 'products#home'
 
   
   # The priority is based upon order of creation: first created -> highest priority.
