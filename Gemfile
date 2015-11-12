@@ -33,6 +33,7 @@ gem 'rails4-autocomplete'
 gem 'jquery-ui-rails'
 gem 'jquery-turbolinks'
 gem 'gon'
+gem 'ransack', '~> 1.7.0'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

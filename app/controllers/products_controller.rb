@@ -17,7 +17,8 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all.all.paginate(:page => params[:page], :per_page => 3)
+    @search = Product.search(params[:q])
+    @products = @search.result
   end
 
   def home

@@ -1,0 +1,36 @@
+<%= search_form_for @search do |f| %>
+  <div class="large-5 small-4 columns">
+    <%= f.label :price_gteq, class: "movie-label" %>
+    <%= f.text_field :price_gteq, class: "radius", placeholder: "Minumum Price" %>
+  </div>
+  <h6 class="large-2 small-4 columns center"><span>And</span></h6>
+  <div class="large-5 small-4 columns">
+    <%= f.label :price_lteq, class: "movie-label" %>
+    <%= f.text_field :price_lteq, class: "radius", placeholder: "Maximum Price" %>
+  </div>
+
+  <h6 class="large-2 small-4 columns center"><span>And</span></h6>
+  <div class="large-5 small-4 columns">
+    <%= f.label :condition_eq, class: "movie-label" %>
+    <%= f.select :condition_eq, [ 'New', 'Old'], :prompt => 'Select One', class: "radius"%>
+  </div>
+
+  <h6 class="large-2 small-4 columns center"><span>And</span></h6>
+  <div class="large-5 small-4 columns">
+    <%= f.label :category_id_eq, class: "movie-label" %>
+    <%= f.collection_select :category_id_eq, Category.all, :id, :name, { prompt: "Choose a category" }%>
+  </div>
+
+  <h6 class="large-2 small-4 columns center"><span>And</span></h6>
+  <div class="large-5 small-4 columns">
+    <%= f.label :subcategory_eq, class: "movie-label" %>
+    <%= f.collection_select :subcategory_id_eq, Subcategory.all, :id, :name, { prompt: "Choose a category" }%>
+  </div>
+
+  <div class="column">
+    <%= f.submit "Search", class: " radius button" %>
+  </div>
+  <div class="column">
+    <%= link_to "Delete", products_path %>
+  </div>
+<% end %>
