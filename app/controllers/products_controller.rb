@@ -21,7 +21,7 @@ class ProductsController < ApplicationController
     @products = Product.all
     t = []
     @products.each do |f| t << f.title end
-      t = t.uniq
+    t = t.uniq
     gon.titles = t
     @products = Product.all.all.paginate(:page => params[:page], :per_page => 3)
     if params[:search]
