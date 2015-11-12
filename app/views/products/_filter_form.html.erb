@@ -1,4 +1,4 @@
-<%= search_form_for @search do |f| %>
+<%= search_form_for @search, url: searching_path do |f| %>  <!--dodanie url: ..._path powoduje ze po wypelnieniu form akcja zostaje -przekierowania do wskazanej sciezki -->
   <div class="large-5 small-4 columns">
     <%= f.label :price_gteq, class: "movie-label" %>
     <%= f.text_field :price_gteq, class: "radius", placeholder: "Minumum Price" %>
@@ -31,6 +31,6 @@
     <%= f.submit "Search", class: " radius button" %>
   </div>
   <div class="column">
-    <%= link_to "Delete", products_path %>
+    <%= link_to "Delete", searching_path %>
   </div>
 <% end %>

@@ -1,8 +1,8 @@
 class ProductsController < ApplicationController
   impressionist :actions=>[:show]
-  before_action :find_product, except: [:index, :new, :create, :sort_list, :home]
+  before_action :find_product, except: [:index, :new, :create, :sort_list, :searching]
   autocomplete :product, :title, :full => true
-  before_action :authenticate_user!, except: [:home]
+  before_action :authenticate_user!, except: [:index]
 
   def new
     @product = current_user.products.build
@@ -17,12 +17,12 @@ class ProductsController < ApplicationController
     redirect_to root_path, notice: "Product was deleted"
   end
 
-  def index
+  def searching
     @search = Product.search(params[:q])
     @products = @search.result
   end
 
-  def home
+  def index
     @products = Product.all
     t = []
     @products.each do |f| t << f.title end
