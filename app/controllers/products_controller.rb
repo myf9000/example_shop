@@ -2,9 +2,10 @@ class ProductsController < ApplicationController
   impressionist :actions=>[:show]
   before_action :find_product, except: [:index, :new, :create, :sort_list, :home]
   autocomplete :product, :title, :full => true
+  before_action :authenticate_user!, except: [:home]
 
   def new
-    @product = Product.new
+    @product = current_user.products.build
   end
 
   def show
@@ -58,7 +59,7 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.new(product_params)
+    @product = current_user.products.build(product_params)
     if @product.save
       redirect_to @product, notice: "Product was added"
     else 

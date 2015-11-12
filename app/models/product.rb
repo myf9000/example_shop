@@ -35,4 +35,5 @@ class Product < ActiveRecord::Base
 								  	allow_destroy: true
 
 	scope :title_like, -> (title) { where("title like ?", title)}
+	belongs_to :user
 end
