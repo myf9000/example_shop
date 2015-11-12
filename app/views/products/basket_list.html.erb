@@ -1,0 +1,16 @@
+<% provide(:title, "Basket") %>
+<h4>Your favorites list (<%= @products.count %>)</h4>
+<hr>
+<% if @products.empty? %>
+  Your backet is empty!
+<%else%>
+<% @products.each do |f| %>
+  <%= f.title %>
+  <%= link_to "Show", f, class: "btn btn-default" %>
+  <%= link_to "Delete from basket", basket_product_path(f, type: "delete"), method: :put, class: "btn btn-default" %>
+  <br>
+<% end %>
+<%end%>
+<hr>
+
+<%= link_to "Back", root_path, class: "btn btn-default" %>

@@ -19,6 +19,13 @@
 <p>Viewed: <%= @product.impressionist_count(:filter=>:ip_address) %> </p>
 <hr>
 <%= link_to "Back", root_path %>
+
+<%if @product.check_basket(@product, current_user) %>
+  <%= link_to "Delete from basket", basket_product_path(@product, type: "delete"), method: :put, class: "btn btn-default" %>
+<%else%>
+  <%= link_to "Add to favorite",   basket_product_path(@product, type: "add"), method: :put %>
+<%end%>
+
 <%= link_to "Edit", edit_product_path(@product) if can? :update, @product %>
 <%= link_to "Delete", product_path, method: :delete, data: {confirm: "Are You Sure?"} if can? :delete, @product%>
 

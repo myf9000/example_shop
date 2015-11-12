@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :products, dependent: :destroy
+  has_many :your_baskets  
+  has_many :baskets, through: :your_baskets, source: :product
 end

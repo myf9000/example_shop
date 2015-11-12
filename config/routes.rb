@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   get 'static_pages/faq', as: :faq
   get 'static_pages/news', as: :news
   get '/searching', to: 'products#searching', as: :searching
+  get 'products/basket_list'
   resources :products do
+    put :basket, on: :member
   get 'products/autocomplete_product_title' , :on => :collection
 end
   resources :categories, only: [:new, :create] do

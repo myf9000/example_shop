@@ -36,4 +36,11 @@ class Product < ActiveRecord::Base
 
 	scope :title_like, -> (title) { where("title like ?", title)}
 	belongs_to :user
+	has_many :products, dependent: :destroy
+  	has_many :your_baskets  
+  	has_many :baskets_by, through: :your_baskets, source: :product
+
+  	def check_basket(product, user)
+  		user.baskets.include?(product)
+  	end
 end

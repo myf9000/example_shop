@@ -9,6 +9,7 @@ class Ability
     else
         can :read, :all
         can :manage, Product, :user_id => user.id
+        can :add, YourBasket 
     end
   end
 end

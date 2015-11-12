@@ -1,10 +1,10 @@
 class ProductsController < ApplicationController
   impressionist :actions=>[:show]
-  before_action :find_product, except: [:index, :new, :create, :sort_list, :searching]
+  before_action :find_product, except: [:index, :new, :create, :sort_list, :searching, :basket_list]
   autocomplete :product, :title, :full => true
   before_action :authenticate_user!, except: [:index]
 
-  load_and_authorize_resource
+  load_and_authorize_resource except: [:basket]
 
   def new
     @product = current_user.products.build
@@ -75,6 +75,23 @@ class ProductsController < ApplicationController
   def get_subcategories
     @subcategories = Subcategory.where(category_id: params[:category_id])
     respond_with(@subcategories)
+  end
+
+   def basket
+    type = params[:type]
+    if type == "add"
+      current_user.baskets << @product
+      redirect_to :back, notice: 'You added basket'
+    elsif type == "delete"
+      current_user.baskets.delete(@product)
+      redirect_to :back, notice: 'You deleted basket'
+    else
+      redirect_to :back, notice: 'Nothing happened.'
+    end
+  end
+
+  def basket_list
+    @products = current_user.baskets
   end
 
   private
