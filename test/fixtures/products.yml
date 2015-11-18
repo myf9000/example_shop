@@ -3,9 +3,11 @@
 one:
   title: MyString
   price: 9.99
-  description: MyText
+  description: MyText *20
+  condition: Old
 
 two:
   title: MyString
   price: 9.99
-  description: MyText
+  description: MyText * 20
+  condition: New
